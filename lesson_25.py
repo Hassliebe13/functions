@@ -17,32 +17,52 @@ SRP - Single Responsibility Principle - Принцип единственной 
 # def - ключевое слово для определения функции
 
 
-# Пример функции с параметром и проверка на типы данных
-def hello(name):
-    if not isinstance(name, str):
-        raise TypeError("Ошибка: имя должно быть строкой")
-    return f"Привет, {name}!"
+# Функции с множественными параметрами *args
+
+print(1)
+print(1, 2)
+# print(1,2,3, n...)
 
 
-result = hello("Мир")
-print(result)
-# result2 = hello([])
-# print(result2)
+def get_many_sum(*nums):
+    print(nums)  # tuple - кортеж (1,2,3,4,5,6,7,8,9,10)
+    print(type(nums))  # <class 'tuple'>
+    print(*nums)  # 1 2 3 4 5 6 7 8 9 10
+    print(nums[0], nums[1], nums[2], nums[3], nums[4], nums[5])
 
 
-def get_sum(a, b):
-    return a + b
+get_many_sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+get_many_sum("п", "р", "и", "в", "е", "т")
+num_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+get_many_sum(*num_list)
+
+"""
+Напишите функцию, которая принимает *args слов
+и возвращает их количество
+
+Напишите функию которая принимает *args слов
+проверяет их на палиндромы и возвращает список палиндромов
+
+Напишите функцию, которая принимает *args слов
+проверяет их на палиндромы и возвращает словарь формата {слово: True/False}
+"""
 
 
-def main():
-    user_input = input("Введите два числа через пробел: ")
-    try:
-        a, b = map(int, user_input.split())
-        result = get_sum(a, b)
-        print(f"Сумма чисел: {result}")
-    except ValueError:
-        print("Ошибка: введите два целых числа, разделенных пробелом")
+def number_words(*args):
+    return len(args)
 
 
-if __name__ == "__main__":
-    main()
+print(number_words("привет", "мир", "как", "дела"))
+
+
+def palindromes(*args):
+    return {word for word in args if word == word[::-1]}
+
+
+print(palindromes("лепс спел", "мир", "как", "дела"))
+
+
+def palindromes_dict(*args):
+    return {word: word == word[::-1] for word in args}
+
+print(palindromes_dict("лепс спел", "мир", "как", "дела"))
