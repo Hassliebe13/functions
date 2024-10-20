@@ -17,19 +17,32 @@ SRP - Single Responsibility Principle - Принцип единственной 
 # def - ключевое слово для определения функции
 
 
-# Пример функции без аргументов и  без возвращаемого значения с print
-def print_hello():
-    print("Hello")
+# Пример функции с параметром и проверка на типы данных
+def hello(name):
+    if not isinstance(name, str):
+        raise TypeError("Ошибка: имя должно быть строкой")
+    return f"Привет, {name}!"
 
 
-# Вызов функции
-print_hello()
-
-
-# Функция которая возвращает значение
-def get_hello():
-    return "Hello"
-
-
-result = get_hello()
+result = hello("Мир")
 print(result)
+# result2 = hello([])
+# print(result2)
+
+
+def get_sum(a, b):
+    return a + b
+
+
+def main():
+    user_input = input("Введите два числа через пробел: ")
+    try:
+        a, b = map(int, user_input.split())
+        result = get_sum(a, b)
+        print(f"Сумма чисел: {result}")
+    except ValueError:
+        print("Ошибка: введите два целых числа, разделенных пробелом")
+
+
+if __name__ == "__main__":
+    main()
