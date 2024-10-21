@@ -56,13 +56,13 @@ print(number_words("привет", "мир", "как", "дела"))
 
 
 def palindromes(*args):
-    return {word for word in args if word == word[::-1]}
+    return {word for word in args if word.lower() == word.lower()[::-1]}
 
 
 print(palindromes("лепс спел", "мир", "как", "дела"))
 
 
 def palindromes_dict(*args):
-    return {word: word == word[::-1] for word in args}
+    return {word: word.lower() == word.lower()[::-1] for word in args}
 
 print(palindromes_dict("лепс спел", "мир", "как", "дела"))
